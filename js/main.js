@@ -161,14 +161,17 @@ function startEditing(book) {
   document.getElementById("bookFormAuthor").value = book.author;
   document.getElementById("bookFormYear").value = book.year;
   document.getElementById("bookFormIsComplete").checked = book.isComplete;
-  document.querySelector("#bookFormSubmit").innerHTML = `Simpan perubahan buku <b>${book.title}</b>`;
+  document.querySelector("#bookFormSubmit span").innerText = `Simpan perubahan ${book.title}`;
 }
 
 function resetForm() {
   editingBookId = null;
   document.getElementById("bookForm").reset();
-  document.querySelector("#bookFormSubmit span").innerText =
-    "Belum selesai dibaca";
+
+  const isComplete = document.getElementById("bookFormIsComplete").checked;
+  document.querySelector("#bookFormSubmit span").innerText = isComplete
+    ? "Selesai di baca"
+    : "Belum selesai dibaca";
 }
 
 function createButton(buttonClass, text, eventListener) {
