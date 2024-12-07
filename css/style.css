@@ -118,7 +118,7 @@ section > form > .inline > label {
   color: var(--main-bg-color);
 }
 
-[data-testid="bookItemIsStatusButton"]{
+[data-testid="bookItemIsCompleteButton"]{
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
   border-radius: var(--small);

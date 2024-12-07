@@ -94,13 +94,13 @@
         <h2>Belum selesai dibaca</h2>
 
         <div id="incompleteBookList" data-testid="incompleteBookList">
-          <div data-bookid="{{ id }}" data-testid="bookItem">
+          <div data-bookid="{{ bookId }}" data-testid="bookItem">
             <h3 data-testid="bookItemTitle">{{ bookItemTitle }}</h3>
             <p data-testid="bookItemAuthor">Penulis: {{ bookItemAuthor }}</p>
             <p data-testid="bookItemYear">Tahun: {{ bookItemYear }}</p>
             <div>
-              <button data-testid="bookItemIsStatusButton">
-                {{ bookItemIsStatusButton }}
+              <button data-testid="bookItemIsCompleteButton">
+                {{ bookItemIsCompleteButton }}
               </button>
               <button data-testid="bookItemDeleteButton">
                 {{ bookItemDeleteButton }}
@@ -122,8 +122,8 @@
             <p data-testid="bookItemAuthor">Penulis: {{ bookItemAuthor }}</p>
             <p data-testid="bookItemYear">Tahun: {{ bookItemYear }}</p>
             <div>
-              <button data-testid="bookItemIsStatusButton">
-                {{ bookItemIsStatusButton }}
+              <button data-testid="bookItemIsCompleteButton">
+                {{ bookItemIsCompleteButton }}
               </button>
               <button data-testid="bookItemDeleteButton">
                 {{ bookItemDeleteButton }}
