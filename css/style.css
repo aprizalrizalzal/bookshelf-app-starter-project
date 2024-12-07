@@ -1,0 +1,210 @@
+:root {
+  --main-color: cornflowerblue;
+  --main-bg-color: blue;
+  --main-text-color: white;
+  --main-edit-color: green;
+  --main-delete-color: red;
+  --border-radius: 8px;
+  --small: 8px;
+  --medium: 16px;
+  --large: 32px;
+  --font-family: "Open Sans", sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input,
+button {
+  font-family: var(--font-family);
+}
+
+input,
+button {
+  font-size: 16px;
+}
+
+header {
+  padding: var(--medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+}
+
+main {
+  max-width: 800px;
+  width: 80%;
+  margin: 0 auto;
+  padding: var(--medium);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  padding: var(--medium);
+  border: 1px solid var(--main-bg-color);
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+}
+
+section > h2 {
+  text-align: center;
+  color: var(--main-color);
+}
+
+section > form > .input {
+  margin: var(--small) 0;
+}
+
+section > form > button {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  border: 0;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  padding: var(--small);
+  cursor: pointer;
+}
+
+section > form > button > span {
+  font-weight: bold;
+}
+
+section > form > .input > label {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+section > form > .input > input {
+  display: block;
+  width: 100%;
+  padding: var(--small);
+  margin-top: var(--small);
+  border-radius: 5px;
+  border: 1px solid var(--main-bg-color);
+}
+
+section > form > .inline {
+  margin: var(--medium) 0;
+  display: flex;
+  align-items: center;
+}
+
+section > form > .inline > label {
+  color: var(--main-color);
+  font-weight: bold;
+  margin-right: var(--small);
+}
+
+[data-testid="bookItemTitle"] {
+  margin-top: var(--large);
+  font-weight: bold;
+  color: var(--main-bg-color);
+}
+[data-testid="bookItemAuthor"] {
+  font-style: italic;
+  padding-top: var(--small);
+  color: var(--main-color);
+}
+[data-testid="bookItemYear"] {
+  padding-top: var(--medium);
+  color: var(--main-bg-color);
+}
+
+[data-testid="bookItemIsStatusButton"]{
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  border-radius: var(--small);
+  padding: var(--small);
+  margin-top: var(--medium);
+  cursor: pointer;
+  border: 1px solid darkgray;
+}
+
+[data-testid="bookItemDeleteButton"]{
+  background-color: var(--main-delete-color);
+  color: var(--main-text-color);
+  border-radius: var(--small);
+  padding: var(--small);
+  margin-top: var(--medium);
+  margin-inline: var(--medium);
+  cursor: pointer;
+  border: 1px solid darkgray;
+}
+
+[data-testid="bookItemEditButton"] {
+  background-color: var(--main-edit-color);
+  color: var(--main-text-color);
+  border-radius: var(--small);
+  padding: var(--small);
+  margin-top: var(--medium);
+  cursor: pointer;
+  border: 1px solid darkgray;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: var(--main-text-color);
+  margin: 15% auto;
+  padding: var(--medium);
+  border-radius: var(--small);
+  width: 50%;
+}
+
+.modal > .modal-content > p {
+  margin-bottom: var(--medium);
+}
+
+.modal > .modal-content > p > span {
+  font-weight: bold;
+}
+
+.close {
+  color: var(--main-bg-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal > .modal-content > .action > button {
+  border: 0;
+  padding: 5px;
+  margin-right: var(--small);
+  border-radius: var(--small);
+  cursor: pointer;
+}
+
+.modal > .modal-content > .action > .remove-yes {
+  background-color: var(--main-delete-color);
+  color: var(--main-text-color);
+}
+
+.modal > .modal-content > .action > .remove-no {
+  background-color: var(--main-edit-color);
+  color: var(--main-text-color);
+}

@@ -16,7 +16,7 @@ Untuk mempermudah penilaian submission yang dikirim, Anda perlu memahami ketentu
     - `bookItemTitle`: judul buku
     - `bookItemAuthor`: penulis buku
     - `bookItemYear`: tahun rilis buku
-    - `bookItemIsCompleteButton`: tombol untuk mengubah kondisi buku dari “Belum selesai dibaca” menjadi “Selesai dibaca” atau sebaliknya.
+    - `bookItemIsStatusButton`: tombol untuk mengubah kondisi buku dari “Belum selesai dibaca” menjadi “Selesai dibaca” atau sebaliknya.
     - `bookItemDeleteButton`: tombol untuk menghapus buku.
     - `bookItemEditButton`: tombol untuk mengubah data buku.
 
@@ -28,7 +28,7 @@ Untuk mempermudah penilaian submission yang dikirim, Anda perlu memahami ketentu
   <p data-testid="bookItemAuthor">Penulis: {{ penulis_buku }}</p>
   <p data-testid="bookItemYear">Tahun: {{ tahun_rilis_buku }}</p>
   <div>
-    <button data-testid="bookItemIsCompleteButton">{{ tombol_untuk_ubah_kondisi }}</button>
+    <button data-testid="bookItemIsStatusButton">{{ tombol_untuk_ubah_kondisi }}</button>
     <button data-testid="bookItemDeleteButton">{{ tombol_untuk_hapus }}</button>
     <button data-testid="bookItemEditButton">{{ tombol_untuk_edit }}</button>
   </div>
