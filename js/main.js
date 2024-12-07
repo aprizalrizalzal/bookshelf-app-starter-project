@@ -2,6 +2,7 @@ const books = [];
 const RENDER_EVENT = "render-book";
 const SAVED_EVENT = "saved-book";
 const STORAGE_KEY = "BOOKSHELF_APPS";
+let editingBookId = null; // Menyimpan ID buku yang sedang diedit
 
 document.addEventListener("DOMContentLoaded", () => {
   const submitForm = document.getElementById("bookForm");
@@ -10,7 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   submitForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    addBook();
+    if (editingBookId) {
+      updateBook();
+    } else {
+      addBook();
+    }
   });
 
   isComplete.addEventListener("click", () => {
@@ -46,8 +51,26 @@ function addBook() {
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 
-  document.getElementById("bookForm").reset();
-  document.querySelector("#bookFormSubmit span").innerText = "Belum selesai dibaca";
+  resetForm();
+}
+
+function updateBook() {
+  const title = document.getElementById("bookFormTitle").value;
+  const author = document.getElementById("bookFormAuthor").value;
+  const year = parseInt(document.getElementById("bookFormYear").value);
+  const isComplete = document.getElementById("bookFormIsComplete").checked;
+
+  const book = books.find((b) => b.id === editingBookId);
+  if (book) {
+    book.title = title;
+    book.author = author;
+    book.year = year;
+    book.isComplete = isComplete;
+
+    document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData();
+    resetForm();
+  }
 }
 
 document.addEventListener(RENDER_EVENT, () => {
@@ -116,7 +139,7 @@ function makeBook(book) {
   deleteButton.setAttribute("data-testid", "bookItemDeleteButton");
 
   const editButton = createButton("edit", "Edit buku", () => {
-    console.log(`Edit book with ID: ${book.id}`);
+    startEditing(book);
   });
   editButton.setAttribute("data-testid", "bookItemEditButton");
 
@@ -130,6 +153,22 @@ function makeBook(book) {
   bookItem.append(bookTitle, bookAuthor, bookYear, actionContainer);
 
   return bookItem;
+}
+
+function startEditing(book) {
+  editingBookId = book.id;
+  document.getElementById("bookFormTitle").value = book.title;
+  document.getElementById("bookFormAuthor").value = book.author;
+  document.getElementById("bookFormYear").value = book.year;
+  document.getElementById("bookFormIsComplete").checked = book.isComplete;
+  document.querySelector("#bookFormSubmit").innerHTML = `Simpan perubahan buku <b>${book.title}</b>`;
+}
+
+function resetForm() {
+  editingBookId = null;
+  document.getElementById("bookForm").reset();
+  document.querySelector("#bookFormSubmit span").innerText =
+    "Belum selesai dibaca";
 }
 
 function createButton(buttonClass, text, eventListener) {
